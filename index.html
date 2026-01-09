@@ -3,115 +3,142 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>KATIN_BIOSCIENCE // ARCHIVE_V3</title>
+    <title>KATIN_BIOSCIENCE // MARINE_UNIT_2026</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;700&display=swap" rel="stylesheet">
     <style>
-        :root { --bg: #050505; --text: #d1d1d1; --accent: #39FF14; /* Bioluminescent Green */ --dim: #2a2a2a; }
-        body { background-color: var(--bg); color: var(--text); font-family: 'JetBrains Mono', monospace; text-transform: uppercase; letter-spacing: 0.05em; margin: 0; padding-bottom: 60px; }
-        .crt-overlay { background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.1) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.03), rgba(0, 255, 0, 0.01), rgba(0, 0, 255, 0.03)); background-size: 100% 2px, 3px 100%; pointer-events: none; position: fixed; inset: 0; z-index: 50; }
-        .border-main { border-color: var(--dim); }
-        .text-accent { color: var(--accent); }
-        .bg-accent { background-color: var(--accent); }
-        .meta { font-size: 9px; color: var(--accent); opacity: 0.7; }
+        :root {
+            --sea-dark: #00121a;
+            --foam: #98ffeb;
+            --sand: #d8d0c1;
+            --deep-blue: #002b36;
+        }
+        body {
+            background-color: var(--sea-dark);
+            color: var(--sand);
+            font-family: 'JetBrains Mono', monospace;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            padding-bottom: 60px;
+        }
+        .crt-overlay {
+            background: linear-gradient(rgba(0, 18, 26, 0) 50%, rgba(0, 0, 0, 0.2) 50%), 
+                        linear-gradient(90deg, rgba(0, 255, 235, 0.03), rgba(0, 255, 235, 0.01), rgba(0, 255, 235, 0.03));
+            background-size: 100% 3px, 3px 100%;
+            pointer-events: none;
+            position: fixed;
+            inset: 0;
+            z-index: 50;
+        }
+        .border-katin { border-color: rgba(152, 255, 235, 0.2); }
+        .text-accent { color: var(--foam); } 
+        .bg-accent { background-color: var(--foam); }
         
         /* Ticker Styling */
-        .ticker-bar { position: fixed; bottom: 0; width: 100%; background: #000; border-top: 1px solid var(--dim); padding: 8px 0; z-index: 100; overflow: hidden; }
-        .ticker-content { display: flex; width: max-content; animation: scroll 40s linear infinite; }
-        .ticker-unit { padding: 0 40px; font-size: 10px; color: var(--accent); white-space: nowrap; }
-        @keyframes scroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+        .ticker-wrap { position: fixed; bottom: 0; left: 0; width: 100%; background: #000; border-top: 1px solid var(--foam); padding: 8px 0; z-index: 100; overflow: hidden; }
+        .ticker-move { display: flex; width: max-content; animation: ticker 40s linear infinite; }
+        .ticker-item { white-space: nowrap; padding: 0 50px; font-size: 10px; color: var(--foam); }
+        @keyframes ticker { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+
+        .meta-tag { font-size: 8px; border: 1px solid var(--foam); padding: 0 4px; margin-left: 5px; vertical-align: middle; }
     </style>
 </head>
-<body class="p-4 md:p-10">
+<body class="min-h-screen p-4 md:p-10">
     <div class="crt-overlay"></div>
 
-    <header class="border-b border-main pb-6 mb-16 flex flex-col md:flex-row justify-between items-baseline gap-4">
+    <header class="border-b border-katin pb-8 mb-16 flex flex-col md:flex-row justify-between items-start">
         <div>
-            <h1 class="text-2xl font-bold tracking-tighter">KATIN_BIOSCIENCE<span class="text-accent italic">.SYS</span></h1>
-            <p class="meta">MOD: LOLA_MODEL_SURF_ANALYSIS // UNIT: B_04</p>
+            <h1 class="text-xl font-bold text-accent tracking-tighter italic">KATIN_BIOSCIENCE // MARINE_UNIT</h1>
+            <p class="text-[10px] opacity-60">MODEL: LOLA_v3.2 // COORDS: 33.72° N, 118.08° W</p>
         </div>
-        <nav class="flex gap-6 text-[11px]">
-            <a href="#" class="hover:text-accent border border-main px-3 py-1">[[01] BATHYMETRY]</a>
-            <a href="#" class="hover:text-accent border border-main px-3 py-1">[[02] TEXTILES]</a>
-            <a href="#" class="hover:text-accent border border-main px-3 py-1">[[03] LOG]</a>
+        <nav class="flex gap-4 text-[10px] mt-4 md:mt-0">
+            <a href="#" class="hover:text-accent border border-katin px-3 py-1">[[01] BATHYMETRY]</a>
+            <a href="#" class="hover:text-accent border border-katin px-3 py-1">[[02] TEXTILES]</a>
+            <a href="#" class="hover:text-accent border border-katin px-3 py-1">[[03] COMM_LINK]</a>
         </nav>
     </header>
 
     <main class="max-w-6xl mx-auto">
         <section class="mb-32">
-            <div class="mb-4 text-[10px] text-accent opacity-80 animate-pulse">// SCANNING_BATHYMETRY_DATA_STREAMS...</div>
-            <h2 class="text-5xl md:text-8xl font-bold leading-[0.9] mb-10">
-                PEAKING<br>
-                <span class="text-accent italic">ENERGY</span><br>
-                DISTRIBUTION.
+            <div class="mb-4 text-xs text-accent opacity-80 animate-pulse">// SCANNING_TIDAL_PATTERNS...</div>
+            <h2 class="text-5xl md:text-8xl font-bold leading-none mb-10">
+                BUILT FOR THE <br>
+                <span class="text-accent italic">HEAVY_SWELL</span>.
             </h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-16">
-                <p class="text-sm leading-relaxed opacity-60 normal-case">
-                    Utilizing high-period groundswell data and Surfline's proprietary <span class="text-accent">LOLA forecasting engine</span> to stress-test our molecular fiber coatings. We build for the impact zone, where mechanical torque meets salt-water saturation.
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                <p class="text-sm leading-relaxed opacity-70 normal-case">
+                    Merging 1954 heritage <span class="text-accent">"Kanvas Logic"</span> with advanced bio-molecular coatings. Utilizing Surfline's LOLA wave models to calculate the structural stress limits of performance marine apparel.
                 </p>
-                <div class="border border-dashed border-main p-6 bg-black/40">
-                    <p class="text-[9px] text-accent mb-4 italic">// WAVE_FORCE_COEFFICIENT</p>
-                    $$ F_w = \int_{z_{min}}^{z_{max}} \frac{1}{2} C_d \rho v^2(z) dz $$
-                    <p class="text-[9px] opacity-40 mt-4">Structural integrity mapped at 15s primary swell periods.</p>
+                <div class="bg-[rgba(152,255,235,0.03)] border border-dashed border-katin p-6">
+                    <p class="text-accent text-[9px] mb-4">// PRIMARY_SWELL_ENERGY</p>
+                    $$ E = \frac{1}{8} \rho g H^2 $$
+                    <p class="mt-4 text-[9px] opacity-40 italic">Testing integrity against 15s groundswell impact periods.</p>
                 </div>
             </div>
         </section>
 
-        <section class="grid grid-cols-1 md:grid-cols-3 gap-1px bg-dim mb-32 border border-main">
-            <div class="bg-bg p-8 hover:bg-black/80 transition-all">
+        <section class="grid grid-cols-1 md:grid-cols-3 gap-12 mb-32 border-t border-katin pt-12">
+            <div>
                 <span class="text-accent text-xs">[[01]]</span>
-                <h3 class="text-lg font-bold mb-4 mt-2 italic">GLASSY_SYNTH</h3>
-                <p class="text-[11px] opacity-50 normal-case leading-loose">Hydro-repellent finishes derived from bio-luminescent organisms. Zero weight gain during 3-hour dawn patrol sessions.</p>
+                <h3 class="text-lg font-bold mb-4 mt-2">HYDRO_DYNAMIC<span class="meta-tag">GLASSY</span></h3>
+                <p class="text-[11px] opacity-60 normal-case leading-loose">Molecular finishes engineered to repel H₂O at the fiber level. Eliminates fabric "drag" and weight-gain during high-velocity take-offs.</p>
             </div>
-            <div class="bg-bg p-8 hover:bg-black/80 transition-all">
+            <div>
                 <span class="text-accent text-xs">[[02]]</span>
-                <h3 class="text-lg font-bold mb-4 mt-2 italic">SATO_PROTOCOL</h3>
-                <p class="text-[11px] opacity-50 normal-case leading-loose">Reinforced seam-welds using 1954 "bulletproof" canvas logic. Engineered to withstand 8ft+ overhead impact pressure.</p>
+                <h3 class="text-lg font-bold mb-4 mt-2">SATO_PROTOCOL<span class="meta-tag">CLEAN</span></h3>
+                <p class="text-[11px] opacity-60 normal-case leading-loose">The 1950s "Bulletproof" seam architecture, re-synthesized with bio-polymer threads for infinite oceanic cycles.</p>
             </div>
-            <div class="bg-bg p-8 hover:bg-black/80 transition-all">
+            <div>
                 <span class="text-accent text-xs">[[03]]</span>
-                <h3 class="text-lg font-bold mb-4 mt-2 italic">THERMAL_LULL</h3>
-                <p class="text-[11px] opacity-50 normal-case leading-loose">Molecular heat-sync technology. Maintains homeostasis in sub-55° Pacific waters via metabolic reflection.</p>
+                <h3 class="text-lg font-bold mb-4 mt-2">THERMAL_LULL<span class="meta-tag">ACTIVE</span></h3>
+                <p class="text-[11px] opacity-60 normal-case leading-loose">Cellular heat-retention logic. Optimized for extended dawn patrol exposure in sub-60° Pacific waters.</p>
             </div>
         </section>
 
-        <section class="mb-32">
-            <h3 class="text-xl font-bold mb-8 border-b border-main pb-4 italic">[[PROVISIONS_MANIFEST]]</h3>
+        <section class="mb-32 border border-katin p-8 bg-[rgba(0,43,54,0.4)]">
+            <h3 class="text-xl font-bold italic tracking-widest text-accent mb-8">[[04] KANVAS_PROVISIONS]</h3>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <div class="border border-main p-6 flex justify-between items-center group hover:border-accent">
-                    <div>
-                        <h4 class="font-bold text-lg">KB_KANVAS_TRUNK_v1</h4>
-                        <p class="text-[10px] text-accent">REINFORCED_SEAMS // SALT_RESISTANT</p>
+                <div class="border border-katin p-6 group hover:bg-[rgba(152,255,235,0.05)] transition-all">
+                    <div class="flex justify-between items-start mb-4">
+                        <h4 class="font-bold text-xl">WATERMAN_TRUNK_v2</h4>
+                        <span class="text-[10px] border border-accent text-accent px-2">IN_STOCK</span>
                     </div>
-                    <button class="text-[10px] border border-main px-4 py-2 group-hover:bg-accent group-hover:text-black">ACQUIRE</button>
+                    <p class="text-xs opacity-60 mb-6 normal-case">Classic 18" outseam. Reinforced for reef-break abrasion and salt-water corrosion resistance.</p>
+                    <div class="flex justify-between items-center">
+                        <span class="text-lg font-bold">$85.00</span>
+                        <button class="text-xs border border-katin px-6 py-2 hover:bg-accent hover:text-black transition-all">ACQUIRE</button>
+                    </div>
                 </div>
-                <div class="border border-main p-6 flex justify-between items-center group hover:border-accent">
-                    <div>
-                        <h4 class="font-bold text-lg">THERM_SHIELD_SHELL</h4>
-                        <p class="text-[10px] text-accent">BIO_SOURCED // HEAT_RETENTION</p>
+                <div class="border border-katin p-6 group hover:bg-[rgba(152,255,235,0.05)] transition-all">
+                    <div class="flex justify-between items-start mb-4">
+                        <h4 class="font-bold text-xl">DAWN_PATROL_THERM</h4>
+                        <span class="text-[10px] border border-accent text-accent px-2">IN_STOCK</span>
                     </div>
-                    <button class="text-[10px] border border-main px-4 py-2 group-hover:bg-accent group-hover:text-black">ACQUIRE</button>
+                    <p class="text-xs opacity-60 mb-6 normal-case">Bio-sourced waffled insulation. Engineered for pre-session monitoring in heavy marine layer fog.</p>
+                    <div class="flex justify-between items-center">
+                        <span class="text-lg font-bold">$110.00</span>
+                        <button class="text-xs border border-katin px-6 py-2 hover:bg-accent hover:text-black transition-all">ACQUIRE</button>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <section class="bg-black border border-main p-6 text-[10px] font-mono leading-relaxed opacity-80 mb-16">
-            <p class="text-accent">> LOADING_SURFLINE_LOLA_FEED... [DONE]</p>
-            <p>> PRIMARY_SWELL: 4.2ft @ 15s SSW [210°]</p>
-            <p>> LOCAL_WIND: 4kts NE [OFFSHORE_GLASSY]</p>
-            <p>> ANALYZING_BATHYMETRIC_IMPACT_ON_TEXTILE_BATCH_402...</p>
-            <p>> [STATUS] INTEGRITY_CONFIRMED: 99.4%</p>
+        <section class="bg-[#000] border border-katin p-6 text-[10px] font-mono leading-relaxed mb-16">
+            <p class="text-accent">> LOADING_LOLA_FORECAST_DATA... [DONE]</p>
+            <p>> STATION: HB_PIER // SURF: 3-4FT (FAIR) // WIND: 6KTS NE</p>
+            <p>> ANALYSIS: OFFSHORE_FLOW_DETECTED // OPTIMIZING_COATINGS...</p>
+            <p>> [WARN] SALT CORROSION INDEX: LOW // SYSTEM_STABLE</p>
             <p class="animate-pulse">> _</p>
         </section>
     </main>
 
-    <div class="ticker-bar">
-        <div class="ticker-content">
-            <div class="ticker-unit">STATION: HUNTINGTON_PIER // SURF: 3-4FT <span class="text-white">(CLEAN)</span> // TIDE: 3.2FT RISING // SWELL: 1.2FT @ 15s</div>
-            <div class="ticker-unit">STATION: SURFSIDE_CA // SURF: 2-3FT <span class="text-white">(GLASSY)</span> // TIDE: 2.8FT EBBING // SWELL: 0.9FT @ 16s</div>
-            <div class="ticker-unit">STATION: MALIBU_POINT // SURF: 4-5FT <span class="text-white">(EPIC)</span> // TIDE: 1.5FT LOW // SWELL: 1.5FT @ 14s</div>
-            <div class="ticker-unit">STATION: HUNTINGTON_PIER // SURF: 3-4FT <span class="text-white">(CLEAN)</span> // TIDE: 3.2FT RISING // SWELL: 1.2FT @ 15s</div>
+    <div class="ticker-wrap">
+        <div class="ticker-move">
+            <div class="ticker-item">STATION: HUNTINGTON_BEACH // SURF: 3-4FT <span class="text-white">(CLEAN)</span> // TIDE: +2.1FT RISING // SWELL: 1.1FT @ 15s SSW</div>
+            <div class="ticker-item">STATION: SURFSIDE_CA // SURF: 2-3FT <span class="text-white">(GLASSY)</span> // TIDE: +1.8FT EBBING // SWELL: 0.8FT @ 16s SW</div>
+            <div class="ticker-item">STATION: MALIBU_POINT // SURF: 4-5FT <span class="text-white">(EPIC)</span> // TIDE: +2.4FT RISING // SWELL: 1.3FT @ 14s S</div>
+            <div class="ticker-item">STATION: HUNTINGTON_BEACH // SURF: 3-4FT <span class="text-white">(CLEAN)</span> // TIDE: +2.1FT RISING // SWELL: 1.1FT @ 15s SSW</div>
         </div>
     </div>
 </body>

@@ -9,7 +9,7 @@
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;700&display=swap" rel="stylesheet">
     <style>
         :root { --sea-dark: #00121a; --foam: #98ffeb; --sand: #d8d0c1; }
-        body { background-color: var(--sea-dark); color: var(--sand); font-family: 'JetBrains Mono', monospace; text-transform: uppercase; letter-spacing: 0.05em; overflow-x: hidden; padding-bottom: 50px; }
+        body { background-color: var(--sea-dark); color: var(--sand); font-family: 'JetBrains Mono', monospace; text-transform: uppercase; letter-spacing: 0.05em; overflow-x: hidden; padding-bottom: 60px; }
         .crt-overlay { background: linear-gradient(rgba(0, 18, 26, 0) 50%, rgba(0, 0, 0, 0.2) 50%), linear-gradient(90deg, rgba(0, 255, 235, 0.03), rgba(0, 255, 235, 0.01), rgba(0, 255, 235, 0.03)); background-size: 100% 3px, 3px 100%; pointer-events: none; position: fixed; inset: 0; z-index: 50; }
         .border-katin { border-color: rgba(152, 255, 235, 0.2); }
         .text-accent { color: var(--foam); } 
@@ -18,28 +18,32 @@
         pre { line-height: 1.1; font-size: 10px; color: var(--foam); opacity: 0.9; }
         
         /* Tidal Ticker Animation */
-        .ticker-wrap { position: fixed; bottom: 0; left: 0; width: 100%; background: #000; border-top: 1px solid var(--foam); padding: 5px 0; z-index: 100; overflow: hidden; }
-        .ticker-move { display: flex; width: max-content; animation: ticker 30s linear infinite; }
-        .ticker-item { white-space: nowrap; padding: 0 40px; font-size: 10px; color: var(--foam); }
+        .ticker-wrap { position: fixed; bottom: 0; left: 0; width: 100%; background: #000; border-top: 1px solid var(--foam); padding: 8px 0; z-index: 100; overflow: hidden; }
+        .ticker-move { display: flex; width: max-content; animation: ticker 45s linear infinite; }
+        .ticker-item { white-space: nowrap; padding: 0 50px; font-size: 10px; color: var(--foam); font-weight: bold; }
         @keyframes ticker { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+
+        /* Glitch Effect for Title */
+        .glitch:hover { text-shadow: 2px 0 #ff0000, -2px 0 #0000ff; animation: glitch-anim 0.2s infinite; }
+        @keyframes glitch-anim { 0% { transform: translate(0); } 20% { transform: translate(-2px, 2px); } 40% { transform: translate(-2px, -2px); } 60% { transform: translate(2px, 2px); } 80% { transform: translate(2px, -2px); } 100% { transform: translate(0); } }
     </style>
 </head>
 <body class="min-h-screen p-4 md:p-8">
     <div class="crt-overlay"></div>
 
     <header class="mb-12 border-b border-katin pb-8 flex flex-col md:flex-row justify-between items-start">
-<pre>
+<pre class="glitch">
   _  __     _   _             ____  _ 
  | |/ /__ _| |_(_)_ __       | __ )(_) ___ 
  | ' // _` | __| | '_ \ _____|  _ \| |/ _ \
  | . \ (_| | |_| | | | |_____| |_) | | (_) |
  |_|\_\__,_|\__|_|_| |_|     |____/|_|\___/
- [SYS_VER: 2026.01.09]      [LOC: SURFSIDE_CA]
+ [MODEL: LOLA_v3.2]         [STATION: HB_PIER]
 </pre>
         <div class="text-[10px] mt-4 md:mt-0 text-right opacity-60">
-            STATION_LOG: 33.7225° N, 118.0825° W<br>
-            NET_STATUS: ENCRYPTED_TUNNEL<br>
-            WEATHER: CLEAR // WIND: 5kts WNW
+            SURF: 3-4ft <span class="text-accent">(FAIR)</span><br>
+            SWELL: 1.1ft @ 15s SSW [195°]<br>
+            WIND: 7kts ENE [OFFSHORE]
         </div>
     </header>
 
@@ -47,71 +51,74 @@
         <section class="mb-24 grid grid-cols-1 lg:grid-cols-2 gap-12">
             <div>
                 <h2 class="text-5xl md:text-7xl font-bold leading-none mb-8">
-                    HYDRO<br><span class="text-accent italic">LOGIC</span><span class="meta-tag">V.04</span>
+                    BATHYMETRIC<br><span class="text-accent italic">VALUATION</span><span class="meta-tag">GLASSY</span>
                 </h2>
                 <p class="text-sm leading-relaxed mb-8 normal-case opacity-80">
-                    Katin Bioscience analyzes the molecular interaction between saline environments and performance textiles. We utilize stochastic modeling to predict fabric degradation and cellular thermal loss in high-swell conditions.
+                    Utilizing Surfline's proprietary <span class="text-accent">LOLA Ocean Wave Model</span>, Katin Bioscience maps the structural integrity of textiles against long-period groundswells. Our apparel is engineered to withstand the mechanical energy of a <span class="italic">3 feet overhead</span> impact zone.
                 </p>
                 <div class="flex gap-4">
-                    <button class="bg-accent text-black px-8 py-3 text-xs font-bold hover:invert transition-all">DECODE_MANUAL</button>
-                    <button class="border border-katin px-8 py-3 text-xs hover:bg-white/10">DATA_ARCHIVE</button>
+                    <button class="bg-accent text-black px-8 py-3 text-xs font-bold hover:scale-105 transition-all">DECODE_SWELL</button>
+                    <button class="border border-katin px-8 py-3 text-xs hover:bg-white/10">BATHYMETRIC_PDF</button>
                 </div>
             </div>
-            <div class="border border-katin bg-black/30 p-4">
-                <p class="text-[9px] text-accent mb-2">// POLYMER_STRESS_DISTRIBUTION</p>
-                
-                <p class="mt-4 text-[10px] opacity-50 normal-case">Figure 1.1: Cross-linked polymer chains engineered for maximum salt-water repulsion and tensile strength retention.</p>
+            <div class="border border-katin bg-black/30 p-6 relative">
+                <div class="absolute top-2 right-2 text-[8px] text-accent animate-pulse">LIVE_FEED: HB_NORTHSIDE</div>
+                <p class="text-[9px] text-accent mb-4 underline italic">// SWELL_ENERGY_DISSIPATION_MAP</p>
+                <div class="h-48 flex items-center justify-center border border-dashed border-foam/20">
+                    <span class="text-[10px] opacity-30 text-center">[WAVEFORM VISUALIZATION: 33.65N 118.00W]</span>
+                </div>
+                <p class="mt-4 text-[10px] opacity-50 normal-case">Figure 2.4: Cross-section of a "Peaking Bowl" formation. Analyzing the torque applied to seam-welds during high-velocity lip-impact.</p>
             </div>
         </section>
 
         <section class="mb-24 border-t border-katin pt-12">
             <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
                 <div class="bg-[rgba(152,255,235,0.03)] border border-dashed border-foam/30 p-8">
-                    <p class="text-accent text-[10px] mb-4">// THERMAL_FLUX_EQUATION</p>
-                    $$ \frac{\partial T}{\partial t} = \alpha \left( \frac{\partial^2 T}{\partial x^2} + \frac{\partial^2 T}{\partial y^2} \right) - \lambda_{ocean} $$
-                    <p class="mt-4 text-[10px] opacity-40">Calculating the rate of heat dissipation in sub-60° Pacific waters to optimize our thermal layering thickness.</p>
+                    <p class="text-accent text-[10px] mb-4">// PRIMARY_SWELL_VECTOR</p>
+                    $$ E = \frac{1}{8} \rho g H^2 \cdot \cos(\theta_{swell}) $$
+                    <p class="mt-4 text-[10px] opacity-40">Calculating the energy density of a 15-second groundswell to determine the required denier for our "Bulletproof" Kanvas Trunk.</p>
                 </div>
                 <div class="space-y-6">
-                    <h3 class="text-2xl font-bold">[[02] DIVE_PROTOCOLS]</h3>
-                    <p class="text-xs opacity-70 leading-loose">Each textile batch undergoes 1,000 hours of UV-C saturation and high-pressure saline immersion testing before being categorized as "Kanvas Grade."</p>
+                    <h3 class="text-2xl font-bold">[[02] SATO_ETIQUETTE]</h3>
+                    <p class="text-xs opacity-70 leading-loose">Since 1954, we've focused on "Clean Sections." Our R&D department replicates <span class="italic">DAWN PATROL</span> conditions to ensure zero thermal leakage during the peak morning lull.</p>
                     <ul class="text-[10px] space-y-2 text-accent">
-                        <li>> INTEGRITY_TEST: 0.004mm TOLERANCE</li>
-                        <li>> COLOR_STABILITY: ΔE < 1.0</li>
-                        <li>> DRY_TIME: < 14 MIN (STP)</li>
+                        <li>> SWELL_STABILITY: 100% GROUND_SWELL COMPATIBLE</li>
+                        <li>> WIND_SHIELD: 30mph OFFSHORE RESISTANCE</li>
+                        <li>> WATER_TEMP_OPS: 54°F - 68°F [WETTIE_LOGIC]</li>
                     </ul>
                 </div>
             </div>
         </section>
 
         <section class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-24">
-            <div class="border border-katin p-6 group hover:border-accent">
-                <span class="text-[8px] opacity-50">NODE_001</span>
-                <h4 class="font-bold my-2">SATO_ORIGIN_TRUNK</h4>
+            <div class="border border-katin p-6 group hover:border-accent bg-[#001c26]/40">
+                <span class="text-[8px] opacity-50">SKU: KANVAS_v1</span>
+                <h4 class="font-bold my-2">THE PIER_BOWL TRUNK</h4>
                 <div class="h-px w-full bg-katin mb-4"></div>
-                <p class="text-[10px] opacity-60 mb-6 h-12">The foundation of durability. Nylon 6,6 synthesis with triple-stitch architecture.</p>
+                <p class="text-[10px] opacity-60 mb-6 h-12">Reinforced for reef-break abrasion and high-velocity take-offs. Triple-stitched "Sato-Seal" technology.</p>
                 <div class="flex justify-between items-center text-[10px]">
                     <span class="font-bold text-accent">$85.00</span>
-                    <button class="border border-katin px-2 py-1">ACQUIRE</button>
+                    <button class="border border-katin px-2 py-1 group-hover:bg-accent group-hover:text-black">QUEUE_ITEM</button>
                 </div>
             </div>
-            <div class="border border-katin p-6 group hover:border-accent">
-                <span class="text-[8px] opacity-50">NODE_002</span>
-                <h4 class="font-bold my-2">NEOPRENE_ALT_V4</h4>
+            <div class="border border-katin p-6 group hover:border-accent bg-[#001c26]/40">
+                <span class="text-[8px] opacity-50">SKU: THERM_v4</span>
+                <h4 class="font-bold my-2">DAWN_PATROL SHELL</h4>
                 <div class="h-px w-full bg-katin mb-4"></div>
-                <p class="text-[10px] opacity-60 mb-6 h-12">Bio-sourced limestone rubber. Maximum flexibility with 0% petroleum input.</p>
+                <p class="text-[10px] opacity-60 mb-6 h-12">Internal heat-sync membrane designed for pre-session coastal monitoring in marine-layer conditions.</p>
                 <div class="flex justify-between items-center text-[10px]">
-                    <span class="font-bold text-accent">$210.00</span>
-                    <button class="border border-katin px-2 py-1">ACQUIRE</button>
+                    <span class="font-bold text-accent">$158.00</span>
+                    <button class="border border-katin px-2 py-1 group-hover:bg-accent group-hover:text-black">QUEUE_ITEM</button>
                 </div>
             </div>
-            <div class="border border-katin p-6 group hover:border-accent">
-                <span class="text-[8px] opacity-50">NODE_003</span>
-                <h4 class="font-bold my-2">PACIFIC_SHELL</h4>
+            <div class="border border-katin p-6 group hover:border-accent bg-[#001c26]/40">
+                <span class="text-[8px] opacity-50">SKU: BIO_FIN</span>
+                <h4 class="font-bold my-2">HYDROFOIL_POLYMER</h4>
                 <div class="h-px w-full bg-katin mb-4"></div>
-                <p class="text-[10px] opacity-60 mb-6 h-12">Vapor-permeable membrane. Engineered for coastal fog and atmospheric moisture.</p>
+                <p class="text-[10px] opacity-60 mb-6 h-12">Bio-synthetic resin fins. Engineered flex-ratio based on specific 15s period energy loads.</p>
                 <div class="flex justify-between items-center text-[10px]">
-                    <span class="font-bold text-accent">$145.00</span>
-                    <button class="border border-katin px-2 py-1">ACQUIRE</button>
+                    <span class="font-bold text-accent">$112.00</span>
+                    <button class="border border-katin px-2 py-1 group-hover:bg-accent group-hover:text-black">QUEUE_ITEM</button>
                 </div>
             </div>
         </section>
@@ -119,11 +126,11 @@
 
     <div class="ticker-wrap">
         <div class="ticker-move">
-            <div class="ticker-item">STATION: HUNTINGTON_BEACH // SURF: 3-4FT // TIDE: +2.1FT RISING // TEMP: 59°F // WIND: 4KTS</div>
-            <div class="ticker-item">STATION: MALIBU_POINT // SURF: 2-3FT // TIDE: +1.8FT RISING // TEMP: 58°F // WIND: 6KTS</div>
-            <div class="ticker-item">STATION: SAN_CLEMENTE // SURF: 4-5FT // TIDE: +2.4FT RISING // TEMP: 60°F // WIND: 3KTS</div>
-            <div class="ticker-item">STATION: HUNTINGTON_BEACH // SURF: 3-4FT // TIDE: +2.1FT RISING // TEMP: 59°F // WIND: 4KTS</div>
-            <div class="ticker-item">STATION: MALIBU_POINT // SURF: 2-3FT // TIDE: +1.8FT RISING // TEMP: 58°F // WIND: 6KTS</div>
+            <div class="ticker-item">STATION: HUNTINGTON_BEACH // SURF: 3-4FT <span class="text-white">(CLEAN)</span> // TIDE: 3.5FT [HIGH] // SWELL: 0.9ft @ 14s SSW // WIND: 9kts ENE</div>
+            <div class="ticker-item">STATION: SURFSIDE_CA // SURF: 2-3FT <span class="text-white">(GLASSY)</span> // TIDE: 3.1FT [EBBING] // SWELL: 0.7ft @ 16s SW // WIND: 1kts NW</div>
+            <div class="ticker-item">STATION: MALIBU_POINT // SURF: 4-5FT <span class="text-white">(EPIC)</span> // TIDE: 2.4FT [LOW] // SWELL: 1.1ft @ 15s S // WIND: 3kts NE</div>
+            <div class="ticker-item">STATION: HUNTINGTON_BEACH // SURF: 3-4FT <span class="text-white">(CLEAN)</span> // TIDE: 3.5FT [HIGH] // SWELL: 0.9ft @ 14s SSW // WIND: 9kts ENE</div>
+            <div class="ticker-item">STATION: SURFSIDE_CA // SURF: 2-3FT <span class="text-white">(GLASSY)</span> // TIDE: 3.1FT [EBBING] // SWELL: 0.7ft @ 16s SW // WIND: 1kts NW</div>
         </div>
     </div>
 </body>
